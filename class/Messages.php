@@ -45,6 +45,7 @@ class Messages
     {
         $username = htmlentities($this->username);
         $message = htmlentities($this->mes);
+        $this->date->setTimezone(new DateTimeZone('Europe/Paris'));
         $date = $this->date->format('d/m/y à H:i');
         return <<<HTML
         <p>

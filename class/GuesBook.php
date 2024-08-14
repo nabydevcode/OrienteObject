@@ -2,9 +2,7 @@
 require_once ('class/Messages.php');
 class GuesBook
 {
-
     private string $file;
-
     public function __construct($file)
     {
         $directory = dirname($file);
@@ -22,7 +20,6 @@ class GuesBook
     }
     public function getMessage(): array
     {
-
         $contents = trim(file_get_contents($this->file));
         $lines = explode(PHP_EOL, $contents);
         $messages = [];
@@ -30,8 +27,6 @@ class GuesBook
             $data = json_decode($line, true);
             $messages[] = new Messages($data['username'], $data['message'], new DateTime('@' . $data['date']));
         }
-        return $messages;
+        return array_reverse($messages);
     }
-
-
 }
