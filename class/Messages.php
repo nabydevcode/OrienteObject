@@ -23,7 +23,6 @@ class Messages
     public function getError(): array
     {
         $errors = [];
-
         if (strlen($this->username) < 3) {
             $errors['username'] = "Votre noms est trop court";
         }
@@ -39,7 +38,6 @@ class Messages
             'message' => $this->mes,
             'date' => $this->date->getTimestamp()
         ]);
-
     }
     public function toHTML(): string
     {

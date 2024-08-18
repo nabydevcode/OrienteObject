@@ -1,8 +1,8 @@
 <?php
-require_once ('class/Messages.php');
-require ('class/GuesBook.php');
+require_once('class/Messages.php');
+require('class/GuesBook.php');
 $book = null;
-$messsage = null;
+$elements = null;
 $book = new GuesBook(__DIR__ . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'messages');
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["username"], $_POST["message"])) {
     $message = new Messages($_POST["username"], $_POST["message"]);
@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["username"], $_POST["m
     }
 }
 if ($book instanceof GuesBook) {
-    $messsage = $book->getMessage();
+    $elements = $book->getMessage();
 }
 $title = "livere d'or";
-require ('elements/header.php');
+require('elements/header.php');
 ?>
 <div class="container">
     <h2> livre d'ore </h2>
@@ -56,11 +56,11 @@ require ('elements/header.php');
         </div>
         <button type="submit" class="btn btn-primary">Envoye</button>
     </form>
-    <?php if (!empty($messsage)): ?>
+    <?php if (!empty($elements)): ?>
         <div class="container">
             <h1>Vos Messages</h1>
-            <?php foreach ($messsage as $value): ?>
-                <?= $value->toHTML() ?>
+            <?php foreach ($elements as $value): ?>
+                <?= ($value->toHTML()) ?>
             <?php endforeach ?>
         </div>
     <?php endif ?>
@@ -71,5 +71,5 @@ require ('elements/header.php');
 
 
 <?php
-require ('elements/footer.php');
+require('elements/footer.php');
 ?>

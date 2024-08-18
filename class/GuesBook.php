@@ -1,5 +1,5 @@
 <?php
-require_once ('class/Messages.php');
+require_once('class/Messages.php');
 class GuesBook
 {
     private string $file;
@@ -26,6 +26,7 @@ class GuesBook
         foreach ($lines as $line) {
             $data = json_decode($line, true);
             $messages[] = new Messages($data['username'], $data['message'], new DateTime('@' . $data['date']));
+
         }
         return array_reverse($messages);
     }
